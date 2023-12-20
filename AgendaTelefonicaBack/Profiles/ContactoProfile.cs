@@ -2,7 +2,7 @@
 using AgendaTelefonicaBack.Models.DTO;
 using AgendaTelefonicaBack.Models;
 
-namespace AgendaTelefonicaBack.Models.Profiles
+namespace AgendaTelefonicaBack.Profiles
 {
     public class ContactoProfile : Profile
     {

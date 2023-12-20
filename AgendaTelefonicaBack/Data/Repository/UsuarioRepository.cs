@@ -33,12 +33,12 @@ namespace AgendaTelefonicaBack.Data.Repository
 
         public async Task<List<Usuario>> GetListUsuario()
         {
-            return await _context.Usuario.ToListAsync();
+            return await _context.Usuario.Include(x => x.Contactos).ToListAsync();
         }
 
         public async Task<Usuario> GetUsuarioById(int id)
         {
-            return await _context.Usuario.FindAsync(id);
+            return await _context.Usuario.Include(x => x.Contactos).Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task UpdateUsuario(Usuario register)

@@ -21,6 +21,13 @@
         [Required(ErrorMessage = "La contraseña es obligatoria.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        
+        public ICollection<Contacto> Contactos { get; set; }
+
+        public Usuario()
+        {
+            Contactos = new List<Contacto>();
+        }
 
     }
 

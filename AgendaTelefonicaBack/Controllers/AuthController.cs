@@ -70,22 +70,6 @@ namespace AgendaTelefonicaBack.Controllers
             return Ok(new { success = true, message = "Registro exitoso" });
         }
 
-        [HttpDelete("delete/{userId}")]
-        public async Task<IActionResult> DeleteUser(int userId)
-        {
-            var userToDelete = await _usuarioRepository.GetUsuarioById(userId);
-
-            if (userToDelete == null)
-            {
-                return NotFound(new { message = "Usuario no encontrado" });
-            }
-
-            await _usuarioRepository.DeleteUser(userToDelete);
-
-            return Ok(new { success = true, message = "Usuario borrado exitosamente" });
-        }
-
-
     }
 }
 
