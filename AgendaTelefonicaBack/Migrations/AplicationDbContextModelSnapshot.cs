@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Microsoft.Extensions.Options;
 
 #nullable disable
 
@@ -21,6 +22,7 @@ namespace AgendaTelefonicaBack.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
 
             modelBuilder.Entity("AgendaTelefonicaBack.Models.Contacto", b =>
                 {
@@ -100,12 +102,17 @@ namespace AgendaTelefonicaBack.Migrations
             modelBuilder.Entity("AgendaTelefonicaBack.Models.Contacto", b =>
                 {
                     b.HasOne("AgendaTelefonicaBack.Models.Usuario", "Usuario")
-                        .WithMany()
+                        .WithMany("Contactos")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("AgendaTelefonicaBack.Models.Usuario", b =>
+                {
+                    b.Navigation("Contactos");
                 });
 #pragma warning restore 612, 618
         }
